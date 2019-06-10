@@ -60,13 +60,13 @@ function addBall(pos) {
     if (!ball.audio || !buffers.length) return;
     ball.audio.setBuffer(buffers[Math.floor(Math.random() * buffers.length)]);
     ball.audio.detune = (Math.random() - 0.5) * 2 * 600;
-    const volume = THREE.Math.clamp(body.velocity.length() * 10, 0.1, 1);
+    const volume = THREE.Math.clamp(body.velocity.length() * 20, 0.1, 2);
     if (ball.audio.isPlaying) ball.audio.stop();
     ball.audio.setVolume(volume);
     ball.audio.play();
   });
 }
-addBall(new THREE.Vector3(0, 1.6, -0.5));
+addBall(new THREE.Vector3(0, 1.7, -0.5));
 
 function addButton(color, pos, handler) {
   const pivot = new CANNON.Body({ type: STATIC, mass: 0 });
@@ -86,7 +86,7 @@ function addButton(color, pos, handler) {
         if (!ball.audio || !buffers.length) return;
         ball.audio.setBuffer(buffers[Math.floor(Math.random() * buffers.length)]);
         ball.audio.detune = (Math.random() - 0.5) * 2 * 600;
-        const volume = THREE.Math.clamp(body.velocity.length() * 10, 0.1, 1);
+        const volume = THREE.Math.clamp(body.velocity.length() * 20, 0.1, 2);
         if (ball.audio.isPlaying) ball.audio.stop();
         ball.audio.setVolume(volume);
         ball.audio.play();
@@ -99,7 +99,7 @@ function addButton(color, pos, handler) {
   return ball;
 }
 addButton("yellow", new THREE.Vector3(0.4, 1.0, -0.4), () => {
-  addBall(new THREE.Vector3(0, 1.6, -0.5));
+  addBall(new THREE.Vector3(0, 1.7, -0.5));
 });
 const gravityButton = addButton("purple", new THREE.Vector3(0.4, 1, -0.2), () => {
   if (world.gravity.y === 0) {
@@ -140,7 +140,7 @@ function init() {
     const music = new THREE.Audio(listener);
     music.setBuffer(buffer);
     music.setLoop(true);
-    music.setVolume(0.05);
+    music.setVolume(0.1);
     music.play();
   });
 
@@ -254,7 +254,7 @@ function updateCubes(object) {
 const rotatedOffset = new THREE.Vector3();
 const quatConj = new THREE.Quaternion();
 function animate() {
-  const elapsed = clock.getElapsedTime();
+  const delta = clock.getDelta();
   for (const controller of controllers) {
     if (!controller.pressed && controller.held.body) {
       controller.held.body = null;
@@ -280,7 +280,7 @@ function animate() {
       controller.held.body.velocity.copy(rotatedOffset);
     }
   }
-  world.step(1 / 60, elapsed);
+  world.step(delta, clock.elapsedTime);
   for (const body of bodies) {
     if (!body.audio) continue;
     body.audio.position.copy(body.body.position);
