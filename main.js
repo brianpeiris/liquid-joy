@@ -9,7 +9,8 @@ var effect;
 var clock = new THREE.Clock();
 
 const world = new CANNON.World();
-world.gravity.set(0, -0.003, 0);
+const GRAVITY = -0.005;
+world.gravity.set(0, GRAVITY, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
 
@@ -102,7 +103,7 @@ addButton("yellow", new THREE.Vector3(0.4, 1.0, -0.4), () => {
 });
 const gravityButton = addButton("purple", new THREE.Vector3(0.4, 1, -0.2), () => {
   if (world.gravity.y === 0) {
-    world.gravity.y = -0.003;
+    world.gravity.y = GRAVITY;
     gravityButton.color.setStyle("purple");
   } else {
     gravityButton.color.setStyle("grey");
