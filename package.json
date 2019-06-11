@@ -1,21 +1,13 @@
 {
-  "name": "mc",
-  "version": "1.0.0",
-  "description": "",
-  "main": ".eslintrc.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "browser-sync start -s -w --no-open --no-notify --no-ghost-mode"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "prettier": "^1.18.2"
-  },
-  "dependencies": {
-    "cannon": "^0.6.2"
   }
 }
