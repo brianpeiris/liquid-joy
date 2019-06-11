@@ -5,13 +5,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+      }
+      h1 {
+        position: absolute;
+        font: 100px sans-serif;
+        color: #eee;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        margin-top: -50px;
+        opacity: 0;
+        animation-delay: 1s;
+        animation-duration: 2s;
+        animation-name: fadein;
+        animation-fill-mode: forwards;
+      }
+      @keyframes fadein {
+        from {
+          opacity: 0;
+          letter-spacing: normal;
+        }
+        to {
+          opacity: 1;
+          letter-spacing: 0.1em;
+        }
+      }
       #info {
         font: 12pt sans-serif;
         position: absolute;
         bottom: 25px;
         right: 25px;
       }
-      a, a:visited {
+      a,
+      a:visited {
         color: #ddd;
       }
     </style>
@@ -24,10 +55,9 @@
   </head>
   <body>
     <div id="container"></div>
+    <h1>liquid joy</h1>
     <div id="info">
-      <a href="http://freemusicarchive.org/music/Podington_Bear/Fathomless_-_Ambient/Memory_Wind">
-        music by podington bear
-      </a>
+      <a href="https://www.podingtonbear.com/">music by podington bear</a>
     </div>
   </body>
 </html>

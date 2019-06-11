@@ -47,8 +47,8 @@ const addBall = (() => {
     body.position.copy(pos);
     world.add(body);
 
-    const ball = { isBall: true, body, color: new THREE.Color("green") };
     const audio = new THREE.PositionalAudio(listener);
+    const ball = { audio, isBall: true, body, color: new THREE.Color("green") };
     bodies.push(ball);
 
     body.addEventListener("collide", playSplash(body, audio));
@@ -66,8 +66,8 @@ function addButton(color, pos, handler) {
 
   world.addConstraint(new CANNON.PointToPointConstraint(pivot, ZERO, body, ZERO, 0.05));
 
-  const ball = { body, color: new THREE.Color(color) };
   const audio = new THREE.PositionalAudio(listener);
+  const ball = { audio, body, color: new THREE.Color(color) };
   bodies.push(ball);
 
   handler = handler.bind(ball);
