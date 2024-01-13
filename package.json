@@ -4,7 +4,7 @@
     "start": "browser-sync start -s -w --no-open --no-notify --no-ghost-mode"
   },
   "devDependencies": {
-    "browser-sync": "^2.29.1",
+    "browser-sync": "^3.0.2",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
